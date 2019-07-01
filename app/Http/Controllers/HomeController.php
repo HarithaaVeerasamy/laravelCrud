@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\ProductModel;
 use Illuminate\Support\Facades\Validator;
-
+use App\Task;
 class HomeController extends Controller
 {
     /**
@@ -25,10 +25,16 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $data = ProductModel::get();
-        return view('home',['data' => $data]);
-    }
+        $data = ProductModel::count();
+        $todo = Task::count();
 
+        return view('home',['prod' => $data,'todo'=>$todo]);
+    }
+    public function products()
+    {
+        $data = ProductModel::get();
+        return view('products',['data' => $data]);
+    }
     public function addProduct()
     {
         return view('addProduct');

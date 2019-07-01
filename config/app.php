@@ -176,6 +176,8 @@ return [
         App\Providers\RouteServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         Yajra\Datatables\DataTablesServiceProvider::class,
+        Barryvdh\DomPDF\ServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class,
 
     ],
 
@@ -230,6 +232,8 @@ return [
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
         'Datatables' => Yajra\Datatables\DataTables::class,
+        'PDF' => Barryvdh\DomPDF\Facade::class,
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
 
     ],
 

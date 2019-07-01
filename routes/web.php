@@ -18,8 +18,17 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/products','HomeController@products');
 Route::get('/addProduct','HomeController@addProduct');
 Route::post('/create','HomeController@create');
 Route::get('/delete/{id}','HomeController@delete');
 Route::get('/edit/{id}','HomeController@edit');
 Route::post('/update','HomeController@update');
+
+
+//todo list
+Route::get('/todolist','ToDoController@index');
+Route::post('/create_todo','ToDoController@createtodo');
+Route::get('/deletetodo/{id}','ToDoController@deletetodo');
+Route::get('/pdf','ToDoController@generatePDF');
+Route::get('/excel','ToDoController@generateExcel');

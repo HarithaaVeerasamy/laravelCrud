@@ -38,7 +38,13 @@
                        @guest
                         @else
                             <li class="nav-item">
-                                <a class="nav-link" href="">{{ __('Products') }}</a>
+                                <a class="nav-link" href="/products">{{ __('Products') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/todolist">{{ __('ToDo List') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/products">{{ __('Sub Category') }}</a>
                             </li>
                         @endguest
                     </ul>
