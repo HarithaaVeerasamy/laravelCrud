@@ -49,7 +49,7 @@
                                     <td>{{$prod->qty}}</td>
                                     <td>{{$prod->price}}</td>
                                     <td>
-                                        <img src="{!!  URL::to('/').'/'.$prod->image  !!}" alt="{{ $prod->image }}" style="width:100px;height: 100px;">
+                                        <img src="{!!  URL::to('/').'/'.$prod->image  !!}" alt="{{ $prod->image }}" style="width:50px;height: 50px;">
                                         
                                     </td>
                                     <td>{{($prod->status == 1)?'Active':'Inactive'}}</td>

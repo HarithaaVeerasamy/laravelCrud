@@ -32,3 +32,9 @@ Route::post('/create_todo','ToDoController@createtodo');
 Route::get('/deletetodo/{id}','ToDoController@deletetodo');
 Route::get('/pdf','ToDoController@generatePDF');
 Route::get('/excel','ToDoController@generateExcel');
+
+Route::get('/display','HomeController@DisplayProduct');
+Route::get('/cart','HomeController@cartView');
+Route::get('/add_to_cart/{id}','HomeController@addToCart');
+Route::get('/delete_cart/{id}','HomeController@deleteCart');
+Route::post('/update_cart','HomeController@updateCart');

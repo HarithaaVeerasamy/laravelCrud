@@ -19,6 +19,7 @@
     
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
     
 </head>
 <body>
@@ -37,15 +38,29 @@
                     <ul class="navbar-nav mr-auto">
                        @guest
                         @else
-                            <li class="nav-item">
-                                <a class="nav-link" href="/products">{{ __('Products') }}</a>
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    Masters <span class="caret"></span>
+                                </a>
+                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="/products">
+                                        {{ __('Products') }}
+                                    </a>
+                                    <a class="dropdown-item" href="/todolist">
+                                        {{ __('todolist') }}
+                                    </a>
+                                    <a class="dropdown-item" href="/products">
+                                        {{ __('Sub Category') }}
+                                    </a>
+                                </div>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/todolist">{{ __('ToDo List') }}</a>
+                                <a class="nav-link" href="/display">{{ __('Product Display') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/products">{{ __('Sub Category') }}</a>
+                              <a class="nav-link" href="/cart"> {{ __('Cart') }}</a>
                             </li>
+                           
                         @endguest
                     </ul>
 
