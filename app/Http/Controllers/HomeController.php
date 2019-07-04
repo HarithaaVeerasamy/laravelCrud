@@ -115,6 +115,7 @@ class HomeController extends Controller
             'price'        => $request['price'],
         ];
          if(!empty($request->file('image'))){
+
             $image           = $request->file('image');
             $path            = time().'.'.$image->getClientOriginalExtension();
             $destinationPath = public_path('/images');

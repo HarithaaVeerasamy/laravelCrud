@@ -21,7 +21,7 @@ class ToDoController extends Controller
     {
         $data = ['task_name' => $request['todo'],
                 'created_by' => auth()->id(),
-                'updated_by'=>auth()->id()
+                'updated_by' => auth()->id()
                 ];
         $insert = Task::insertGetId($data);
         if($insert){
@@ -31,7 +31,6 @@ class ToDoController extends Controller
             $request->session()->flash("alert-danger","Error while creating");
              return back();
         }
-
     }
     public function deletetodo($id)
     {
