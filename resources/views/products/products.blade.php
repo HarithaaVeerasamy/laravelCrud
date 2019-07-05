@@ -44,8 +44,8 @@
                                 <tr>
                                     <td>{{$i}}</td>
                                     <td>{{$prod->product_name}}</td>
-                                    <td>{{$prod->category}}</td>
-                                    <td>{{$prod->sub_category}}</td>
+                                    <td>{{$prod->category_name}}</td>
+                                    <td>{{$prod->subcate_name}}</td>
                                     <td>{{$prod->qty}}</td>
                                     <td>{{$prod->price}}</td>
                                     <td>
@@ -62,7 +62,7 @@
                                 @endforeach
                                 @else
                                 <tr>
-                                    <td colspan="7" style="text-align: center;font-weight: bold;">No data Found</td>
+                                    <td colspan="9" style="text-align: center;font-weight: bold;">No data Found</td>
                                 </tr>
                                 @endif
                                 

@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="col-md-4 pull-right">
-        <a class="btn btn-primary" href = "{{url('home')}}">Products</a>
+        <a class="btn btn-primary" href = "{{url('products')}}">Products</a>
     </div>
     <div class="row justify-content-center">
         <div class="col-md-10">
@@ -36,11 +36,22 @@
                             </tr>
                             <tr>
                                 <td> <label>Category</label></td>
-                                <td>{{Form::text('category',$data->category,['class'=>'form-control','placeholder'=>"Enter Product Category",'autocomplete'=>'off'])}}</td>
+                                <td>
+                                   @foreach($category as $cate)
+                                        @php $array[$cate['category_id']] = $cate['category_name'] ; @endphp
+                                    @endforeach
+                                    {{ Form::select('category',$array, $data->category, ['class' => 'form-control box-size', 'placeholder' =>"Select Category", 'required' => 'required','id'=>'Cate']) }}
+                                </td>
                             </tr>
                             <tr>
                                 <td> <label>Sub Category</label></td>
-                                <td>{{Form::text('sub_category',$data->sub_category,['class'=>'form-control','placeholder'=>"Enter Product Sub Category",'autocomplete'=>'off'])}}</td>
+                                <td>
+                                   @php $array1 = array(); @endphp
+                                     @foreach($subcategory as $sub)
+                                        @php $array1[$sub['sub_id']] = $sub['subcate_name'] ; @endphp
+                                    @endforeach
+                                    {{ Form::select('sub_category',$array1, $data->sub_category, ['class' => 'form-control box-size', 'placeholder' =>"Select SubCategory", 'required' => 'required','id'=>'SubCate']) }}
+                                </td>
                             </tr>
                             <tr>
                                 <td> <label>Quantity</label></td>
@@ -51,12 +62,12 @@
                                 <td>{{Form::text('price',$data->price,['class'=>'form-control','placeholder'=>"Enter Product Price",'autocomplete'=>'off'])}}</td>
                             </tr>
                             <tr>
-                                <td> <label>Image</label><br/></td>
+                                <td> <label>Image</label><br/><span>(Leave empty for previous image)</span></td>
                                 <td>{{Form::file('image',null,['class'=>'form-control','placeholder'=>"Enter Product Image",'autocomplete'=>'off'])}}</td>
                             </tr>
                             <tr>
                                 <td colspan="2" style="text-align: center;">{{ Form::submit("Update", ['class' => 'btn btn-primary btn-md']) }} 
-                                     <a href="{{url('home')}}" class="btn btn-danger">Cancel</a>
+                                     <a href="{{url('products')}}" class="btn btn-danger">Cancel</a>
                                 </td>
                                
                             </tr>
@@ -67,4 +78,26 @@
         </div>
     </div>
 </div>
+<script type="text/javascript "src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+    $('#Cate').change(function(){
+        var id   = $(this).val()
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            url: '{{ url("/select_subcate") }}',
+            type: 'POST',
+            data: {
+                id: id
+            }
+        }).done(function(data){
+            if(data){
+                $('#SubCate').html(data);
+            }
+        });
+    })
+} );
+</script>
 @endsection

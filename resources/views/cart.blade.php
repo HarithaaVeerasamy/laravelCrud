@@ -74,7 +74,7 @@
                                 </tbody>
                             </table>
                             <a class="btn btn-secondary" style="float: left" href="/display">Go to shopping</a>
-                            <button class="btn btn-danger" style="float:right;">Check Out</button>
+                            <a class="btn btn-danger" style="float:right;" href="/checkout">Check Out</a>
                         </div>
                     </div>
                 </div>

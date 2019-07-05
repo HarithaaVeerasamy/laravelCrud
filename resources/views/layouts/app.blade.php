@@ -52,7 +52,7 @@
                                     <a class="dropdown-item" href="/category">
                                         {{ __('Category') }}
                                     </a>
-                                    <a class="dropdown-item" href="/products">
+                                    <a class="dropdown-item" href="/subcategory">
                                         {{ __('Sub Category') }}
                                     </a>
                                 </div>

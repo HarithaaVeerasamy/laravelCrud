@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="col-md-4 pull-right">
-        <a class="btn btn-primary" href = "{{url('home')}}">Products</a>
+        <a class="btn btn-primary" href = "{{url('products')}}">Products</a>
     </div>
     <div class="row justify-content-center">
         <div class="col-md-10">
@@ -33,11 +33,20 @@
                             </tr>
                             <tr>
                                 <td> <label>Category</label></td>
-                                <td>{{Form::text('category',null,['class'=>'form-control','placeholder'=>"Enter Product Category",'autocomplete'=>'off'])}}</td>
+                                <td>
+                                   @foreach($category as $cate)
+                                        @php $array[$cate['category_id']] = $cate['category_name'] ; @endphp
+                                    @endforeach
+                                    {{ Form::select('category',$array,  null, ['class' => 'form-control box-size', 'placeholder' =>"Select Category", 'required' => 'required','id'=>'Cate']) }}
+                                </td>
                             </tr>
                             <tr>
                                 <td> <label>Sub Category</label></td>
-                                <td>{{Form::text('sub_category',null,['class'=>'form-control','placeholder'=>"Enter Product Sub Category",'autocomplete'=>'off'])}}</td>
+                                <td>
+                                    <select name="sub_category" class="form-control" placeholder="Select SubCategory" id="SubCate">
+                                        <option value="">Select SubCategory</option>
+                                    </select>
+                                </td>
                             </tr>
                             <tr>
                                 <td> <label>Quantity</label></td>
@@ -64,4 +73,26 @@
         </div>
     </div>
 </div>
+<script type="text/javascript "src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+    $('#Cate').change(function(){
+        var id   = $(this).val()
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            url: '{{ url("/select_subcate") }}',
+            type: 'POST',
+            data: {
+                id: id
+            }
+        }).done(function(data){
+            if(data){
+                $('#SubCate').append(data);
+            }
+        });
+    })
+} );
+</script>
 @endsection

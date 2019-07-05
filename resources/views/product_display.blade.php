@@ -34,9 +34,8 @@
                                             $row .="<p> Rs.".$prod['price']."</p>";
                                             if($prod['qty'] > 0){
                                                 $row .= "<div class='row col-md-12'>";
-                                                $row .="<div class='col-md-6'><button class='btn btn-primary'>Buy</button></div>";
-                                                $row .="<div class='col-md-6'><a class='btn btn-secondary ' href='".url('/add_to_cart/'.$prod['id'])."'>Add to Cart</a></div>";
-                                                $row .="</div>";
+                                                
+                                                $row .="<a class='btn btn-secondary ' href='".url('/add_to_cart/'.$prod['id'])."'>Add to Cart</a></div>";
                                             }else{
                                                 $row .= "<div class='row col-md-12'>";
                                                     $row .="<h3 style='color:red;'>Sold Out!</h3>";
