@@ -25,6 +25,7 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+    //Dashboard
     public function index()
     {
         $data = ProductModel::count();
@@ -140,6 +141,8 @@ class HomeController extends Controller
         $data = ProductModel::get();
         return view('product_display',['data'=>$data]);
     }
+
+    //Product Cart
     public function cartView()
     {
         $data = CartModel::select('cart.quantity','cart.sub_total','product_name','category','sub_category','image','price','cart.id','products.id as product_id','products.qty')->join('products','products.id','=','cart.product_id')->where('user_id',auth()->id())->get();
@@ -190,7 +193,6 @@ class HomeController extends Controller
             'sub_total' => $sub_total
         ];
         $update = CartModel::where('id',$cart_id)->update($data1);
-        //print_r($data1);die;
         echo $cart_id;
     }
 }

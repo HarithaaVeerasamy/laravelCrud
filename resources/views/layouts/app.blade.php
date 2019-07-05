@@ -49,6 +49,9 @@
                                     <a class="dropdown-item" href="/todolist">
                                         {{ __('todolist') }}
                                     </a>
+                                    <a class="dropdown-item" href="/category">
+                                        {{ __('Category') }}
+                                    </a>
                                     <a class="dropdown-item" href="/products">
                                         {{ __('Sub Category') }}
                                     </a>

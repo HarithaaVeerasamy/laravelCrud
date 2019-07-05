@@ -15,6 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -38,3 +40,14 @@ Route::get('/cart','HomeController@cartView');
 Route::get('/add_to_cart/{id}','HomeController@addToCart');
 Route::get('/delete_cart/{id}','HomeController@deleteCart');
 Route::post('/update_cart','HomeController@updateCart');
+
+
+Route::get('/category',
+    [   'as' => 'category',
+        'uses' => 'Category@index']);
+Route::get('/addCategory','Category@addCategory');
+Route::post('/create_category','Category@storeCategory');
+Route::get('/edit_category/{id}','Category@edit');
+Route::post('/update_category','Category@update');
+Route::get('/delete_category/{id}','Category@delete');
+Route::get('/activate_category/{id}','Category@activate');
