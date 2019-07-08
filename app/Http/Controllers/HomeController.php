@@ -29,10 +29,14 @@ class HomeController extends Controller
     //Dashboard
     public function index()
     {
-        $data = ProductModel::count();
-        $todo = Task::count();
-
-        return view('home',['prod' => $data,'todo'=>$todo]);
+        if(auth()->user()->is_admin == 1){
+            $data = ProductModel::count();
+            $todo = Task::count();
+            return view('home',['prod' => $data,'todo'=>$todo]);
+        }else{
+            return redirect()->route("display");
+        }
+        
     }
     
    
@@ -125,10 +129,20 @@ class HomeController extends Controller
            ];
            $create = OrderModel::insertGetId($data);
            $delete = CartModel::where('product_id',$value['product_id'])->where('user_id',auth()->id())->delete();
+           $get_qty = ProductModel::select('qty')->where('id',$value['product_id'])->first();
+           //print_r($get_qty);die;
+           $qty = $get_qty->qty - $value['quantity'];
+
+           ProductModel::where('id',$value['product_id'])->update(['qty'=>$qty]);
        }
        $request->session()->flash('alert-success', 'Order Placed Successfully!');
        $get_order_id = OrderModel::where('user_id',auth()->id())->orderBy('id', 'desc')->first();
        return view('trackorder',['order_id' =>$get_order_id]);
+    }
 
+    public function myOrders()
+    {
+        $data = OrderModel::select('order_id','quantity','sub_total','product_name','order.created_at')->join('products','products.id','=','order.product_id')->where('user_id',auth()->id())->get();
+        return view('myorder',['data'=>$data]);
     }
 }

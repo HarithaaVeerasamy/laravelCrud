@@ -41,7 +41,9 @@ Route::get('/pdf','ToDoController@generatePDF');
 Route::get('/excel','ToDoController@generateExcel');
 
 //cart products
-Route::get('/display','HomeController@DisplayProduct');
+Route::get('/display',
+    [   'as' => 'display',
+        'uses' => 'HomeController@DisplayProduct']);
 Route::get('/cart','HomeController@cartView');
 Route::get('/add_to_cart/{id}','HomeController@addToCart');
 Route::get('/delete_cart/{id}','HomeController@deleteCart');
@@ -50,6 +52,8 @@ Route::post('/update_cart','HomeController@updateCart');
 //checkout
 Route::get('/checkout','HomeController@checkout');
 Route::get('/order','HomeController@order');
+
+Route::get('/myorders','HomeController@myorders');
 
 //category
 Route::get('/category',

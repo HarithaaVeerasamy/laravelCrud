@@ -26,7 +26,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" href="/home">
                     {{ config('app.name', 'Laravel') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -38,6 +38,7 @@
                     <ul class="navbar-nav mr-auto">
                        @guest
                         @else
+                            <?php   if(auth()->user()->is_admin == 1){?>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     Masters <span class="caret"></span>
@@ -60,8 +61,13 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="/display">{{ __('Product Display') }}</a>
                             </li>
+                           <?php }?>
+                            
                             <li class="nav-item">
                               <a class="nav-link" href="/cart"> {{ __('Cart') }}</a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link" href="/myorders"> {{ __('My Orders') }}</a>
                             </li>
                            
                         @endguest
