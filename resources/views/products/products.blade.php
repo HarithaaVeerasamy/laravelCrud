@@ -55,7 +55,11 @@
                                     <td>{{($prod->status == 1)?'Active':'Inactive'}}</td>
                                     <td>
                                         <a href="{{url('/edit/'.$prod->id)}}" class="btn btn-info btn-sm">Edit </a>
+                                        @if($prod->status == 1)
                                         <a href="{{url('/delete/'.$prod->id)}}" class="btn btn-danger btn-sm">InActivate </a>
+                                        @else
+                                         <a href="{{url('/activate/'.$prod->id)}}" class="btn btn-success btn-sm">Activate </a>
+                                        @endif
                                     </td>
                                 </tr>
                                     @php $i++; @endphp

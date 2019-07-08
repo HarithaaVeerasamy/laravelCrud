@@ -132,4 +132,10 @@ class Products extends Controller
         }
         echo $option;
     }
+    public function activate($id, Request $request)
+    {
+        $delete = ProductModel::where('id',$id)->update(['status'=>1]);
+        $request->session()->flash('alert-success', 'Product Successfully Activated!');
+        return redirect()->route("products");
+    }
 }

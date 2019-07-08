@@ -79,7 +79,9 @@
                 </div>
             @endif
 
-            <div class="content">
+            <div class="container">
+                <h3>Welcome to Shopping!!!</h3>
+                <h5>Register or Login to purchase!!!</h5>
             </div>
         </div>
     </body>

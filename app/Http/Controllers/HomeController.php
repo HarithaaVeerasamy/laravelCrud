@@ -43,7 +43,7 @@ class HomeController extends Controller
 
     public function DisplayProduct()
     {
-        $data = ProductModel::get();
+        $data = ProductModel::where('status',1)->get();
         return view('product_display',['data'=>$data]);
     }
 

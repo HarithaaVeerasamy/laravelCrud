@@ -31,7 +31,7 @@ Route::get('/delete/{id}','Products@delete');
 Route::get('/edit/{id}','Products@edit');
 Route::post('/update','Products@update');
 Route::post('/select_subcate','Products@selectSub');
-
+Route::get('/activate/{id}','Products@activate');
 
 //todo list
 Route::get('/todolist','ToDoController@index');
