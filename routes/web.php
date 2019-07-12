@@ -78,3 +78,8 @@ Route::get('/edit_subcategory/{id}','SubCategory@edit');
 Route::post('/update_subcategory','SubCategory@update');
 Route::get('/delete_subcategory/{id}','SubCategory@delete');
 Route::get('/activate_subcategory/{id}','SubCategory@activate');
+
+//Multiple Image Upload
+Route::get('/Prodimages','Products@images');
+Route::get('/addImage','Products@addImage');
+Route::post('/createImage','Products@createImage');

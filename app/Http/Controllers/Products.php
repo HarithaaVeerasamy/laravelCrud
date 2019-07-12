@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Validator;
 use App\ProductModel;
 use App\CategoryModel;
 use App\SubCategoryModel;
+use App\ImageModel;
 use DB;
 class Products extends Controller
 {
@@ -136,6 +137,37 @@ class Products extends Controller
     {
         $delete = ProductModel::where('id',$id)->update(['status'=>1]);
         $request->session()->flash('alert-success', 'Product Successfully Activated!');
+        return redirect()->route("products");
+    }
+
+
+    //Multiple images Upload
+    public function images()
+    {
+        $data = ImageModel::select(DB::raw('DISTINCT group_concat(image_path) as images'),'product_name')->join('products','products.id','=','images.product_id')->groupby('product_id')->get();
+        return view('products.multiprod',['data'=>$data]);
+    }
+
+    public function addImage()
+    {
+        $get_products = ProductModel::select('id','product_name')->where('status',1)->get();
+        return view('products.addimage',['products'=>$get_products]);
+    }
+
+    public function createImage(Request $request)
+    {
+        if($request->file('filename')){
+            foreach ($request->file('filename') as $key=> $image) {
+
+                $path            = time().'.'.$key.'.'.$image->getClientOriginalExtension();
+                $destinationPath = public_path('/images/'.$request['product_id']);
+                $image->move($destinationPath, $path);
+                $data['image_path'] = 'images/'.$request['product_id'].'/'.$path;
+                $data['product_id'] = $request['product_id'];
+                ImageModel::insert($data);
+            }
+        }
+        $request->session()->flash('alert-success', 'Images Successfully Addedd!');
         return redirect()->route("products");
     }
 }

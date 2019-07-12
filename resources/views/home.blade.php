@@ -13,30 +13,44 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                   <table style="width: 100%">
-                       <tr>
-                           <td>
-                                <div class="card" style="width: auto;">
-                                    <div class="card-body">
-                                        <h5 class="card-title">To Do List</h5>
-                                        <p class="card-text">Tasks : {{$todo}}</p>
-                                        <a href="{{url('/todolist')}}" class="btn btn-primary">To Do List</a>
-                                    </div>
-                                </div> 
-                           </td>
-                           <td>
-                               <div class="card" style="width: auto;">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Product List</h5>
-                                        <p class="card-text">Products : {{$prod}}</p>
-                                        <a href="{{url('/products')}}" class="btn btn-primary">Products</a>
-                                    </div>
-                                </div> 
-                           </td>
-                       </tr>
-                   </table>
-                        
-                       
+                    <div class="row col-md-12">
+                        {{-- <div class="col-md-4">
+                            <div class="card" style="width: auto;">
+                                <div class="card-body">
+                                    <h5 class="card-title">To Do List</h5>
+                                    <p class="card-text">Tasks : {{$todo}}</p>
+                                    <a href="{{url('/todolist')}}" class="btn btn-primary">To Do List</a>
+                                </div>
+                            </div>
+                        </div> --}}
+                        <div class="col-md-4">
+                            <div class="card" style="width: auto;">
+                                <div class="card-body">
+                                    <h5 class="card-title">Products </h5>
+                                    <p class="card-text">Total Products : {{$prod}}</p>
+                                    <a href="{{url('/products')}}" class="btn btn-primary">Products</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card" style="width: auto;">
+                                <div class="card-body">
+                                    <h5 class="card-title">Total</h5>
+                                    <p class="card-text">Total Amount : Rs.{{$total->Total}}</p>
+                                    <a href="{{url('/products')}}" class="btn btn-primary">Products</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card" style="width: auto;">
+                                <div class="card-body">
+                                    <h5 class="card-title">Orders</h5>
+                                    <p class="card-text">Total Orders : {{$orders}}</p>
+                                    <a href="{{url('/products')}}" class="btn btn-primary">Products</a>
+                                </div>
+                            </div> 
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

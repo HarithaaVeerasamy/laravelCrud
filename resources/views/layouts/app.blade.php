@@ -56,6 +56,9 @@
                                     <a class="dropdown-item" href="/subcategory">
                                         {{ __('Sub Category') }}
                                     </a>
+                                    <a class="dropdown-item" href="/Prodimages">
+                                        {{ __('Images') }}
+                                    </a>
                                 </div>
                             </li>
                             <li class="nav-item">

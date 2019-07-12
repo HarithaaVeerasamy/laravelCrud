@@ -32,7 +32,9 @@ class HomeController extends Controller
         if(auth()->user()->is_admin == 1){
             $data = ProductModel::count();
             $todo = Task::count();
-            return view('home',['prod' => $data,'todo'=>$todo]);
+            $sub_total = OrderModel::select(DB::Raw('SUM(sub_total) as Total'))->whereMonth('created_at',date('m'))->first();
+            $orders = OrderModel::whereMonth('created_at',date('m'))->count();
+            return view('home',['prod' => $data,'todo'=>$todo,'total'=>$sub_total,'orders'=>$orders]);
         }else{
             return redirect()->route("display");
         }
