@@ -44,6 +44,14 @@
                                      <a href="{{url('addImage')}}" class="btn btn-danger">Cancel</a>
                                 </td>
                             </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <div class="progress">
+                                        <div class="bar"></div >
+                                        <div class="percent">0%</div >
+                                    </div>
+                                </td>
+                            </tr>
                         </table>
                         {{Form::close()}}   
                 </div>
@@ -51,4 +59,7 @@
         </div>
     </div>
 </div>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
+<script src="http://malsup.github.com/jquery.form.js"></script>
+
 @endsection

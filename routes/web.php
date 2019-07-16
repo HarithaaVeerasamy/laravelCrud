@@ -83,3 +83,8 @@ Route::get('/activate_subcategory/{id}','SubCategory@activate');
 Route::get('/Prodimages','Products@images');
 Route::get('/addImage','Products@addImage');
 Route::post('/createImage','Products@createImage');
+
+
+//multiple image with progress bar
+Route::get('/multipleImages','SubCategory@multiple');
+Route::post('/upload','SubCategory@upload')->name('upload');

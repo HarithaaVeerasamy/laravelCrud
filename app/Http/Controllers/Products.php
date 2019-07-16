@@ -168,6 +168,6 @@ class Products extends Controller
             }
         }
         $request->session()->flash('alert-success', 'Images Successfully Addedd!');
-        return redirect()->route("products");
+        // return response()->json(['success'=>'You have successfully upload file.']);
     }
 }

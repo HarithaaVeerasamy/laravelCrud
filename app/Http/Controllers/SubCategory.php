@@ -80,4 +80,24 @@ class SubCategory extends Controller
         $request->session()->flash('alert-success', 'SubCategory Successfully Activated!');
         return redirect()->route("subcategory");
     }
+
+    public function multiple()
+    {
+        return view('multiple');
+    }
+    public function upload(Request $request)
+    {
+        $image_code = '';
+        $images = $request->file('file');
+        foreach($images as $image){
+            $new_name = rand() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('images/multiple'), $new_name);
+            $image_code .= '<div class="col-md-3" style="margin-bottom:24px;"><img src="/images/multiple/'.$new_name.'" class="img-thumbnail" /></div>';
+        }
+        $output = array(
+            'success'  => 'Images uploaded successfully',
+            'image'   => $image_code
+        );
+        return response()->json($output);
+    }
 }

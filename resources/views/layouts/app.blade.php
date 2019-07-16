@@ -59,6 +59,9 @@
                                     <a class="dropdown-item" href="/Prodimages">
                                         {{ __('Images') }}
                                     </a>
+                                    <a class="dropdown-item" href="/multipleImages">
+                                        {{ __('Multiple Images') }}
+                                    </a>
                                 </div>
                             </li>
                             <li class="nav-item">
